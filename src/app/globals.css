@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .headerItem {
+    @apply p-1 w-fit border border-transparent hover:border-white duration-300 cursor-pointer;
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  color: #ccc;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
