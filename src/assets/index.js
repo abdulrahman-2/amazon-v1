@@ -13,6 +13,8 @@ import discover from "./payment-images/discover.svg";
 import paypal from "./payment-images/paypal.svg";
 import verve from "./payment-images/verve.svg";
 import mastercard from "./payment-images/mastercard.svg";
+import github from "./github-mark-white.png";
+import google from "./Google__G__logo.svg.png";
 
 import car_compressors from "../assets/category/Car_compressors.jpg";
 import laptops from "../assets/category/laptops.jpg";
@@ -66,6 +68,8 @@ import guide_9 from "../assets/guide/guide_9.jpg";
 
 export {
   logo,
+  github,
+  google,
   bannerImgOne,
   bannerImgTwo,
   bannerImgThree,

@@ -4,12 +4,21 @@ import { emptyCart } from "@/src/assets";
 import ChangeQuantity from "@/src/components/buttons/ChangeQuantity";
 import DeleteFromCart from "@/src/components/buttons/DeleteFromCart";
 import ProductsList from "@/src/components/products/ProductsList";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useSelector } from "react-redux";
 
 const Cart = () => {
+  const router = useRouter();
+
+  const { data: session } = useSession();
+  if (!session) {
+    router.push("/signIn");
+  }
+
   const { cartItems } = useSelector((state) => state.cart);
 
   const calculateTotal = (cartItems) => {
