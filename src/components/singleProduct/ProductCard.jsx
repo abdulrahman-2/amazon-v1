@@ -4,14 +4,18 @@ import Link from "next/link";
 const ProductCard = ({ product }) => {
   const { images, price, discountPercentage, title } = product;
 
+  const discountedPrice = discountPercentage
+    ? (price - price * (discountPercentage / 100)).toFixed(2)
+    : null;
+
   return (
-    <Link href={`product/${product?.id}`}>
+    <Link href={`product/${product?.id}`} passHref>
       <div className="border rounded-md overflow-hidden shadow-md">
-        <div className="relative bg-[#F7F8F8] p-5 h-[120px] md:h-[200px]">
+        <div className="relative bg-[#F7F8F8] p-5 h-[150px] md:h-[200px]">
           <Image
-            src={images[0]}
-            alt="product image"
-            width={100}
+            src={images[0] || "/placeholder-image.jpg"}
+            alt={title}
+            width={200}
             height={200}
             loading="lazy"
             className="w-full h-full object-contain"
@@ -33,12 +37,12 @@ const ProductCard = ({ product }) => {
           <div>
             <span className="text-amazon_blue text-lg font-semibold mr-5">
               <sup className="text-xs">EGP</sup>
-              {price}
+              {discountedPrice}
             </span>
-            {discountPercentage && (
+            {discountedPrice && (
               <span className="text-gray-500 line-through">
                 <sup className="text-xs">EGP</sup>
-                {(price - price * (discountPercentage / 100)).toFixed(2)}
+                {price.toFixed(2)}
               </span>
             )}
           </div>

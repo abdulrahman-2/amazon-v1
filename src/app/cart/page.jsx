@@ -4,16 +4,21 @@ import { emptyCart } from "@/src/assets";
 import ChangeQuantity from "@/src/components/buttons/ChangeQuantity";
 import DeleteFromCart from "@/src/components/buttons/DeleteFromCart";
 import ProductsList from "@/src/components/products/ProductsList";
+import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import React from "react";
+import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+);
 
 const Cart = () => {
-  const router = useRouter();
-
   const { data: session } = useSession();
   if (!session) {
     redirect("/signIn");
@@ -31,10 +36,31 @@ const Cart = () => {
 
   const calculateSubtotal = (item) => {
     let subTotal = 0;
-
     subTotal = item.price * item.quantity;
-
     return subTotal.toFixed(2);
+  };
+
+  const createCheckout = async () => {
+    if (session?.user) {
+      const stripe = await stripePromise;
+      try {
+        const { data } = await axios.post("/api/checkout", {
+          items: cartItems,
+          email: session?.user?.email,
+        });
+
+        if (data.success) {
+          await stripe?.redirectToCheckout({ sessionId: data.id });
+        } else {
+          toast.error("Failed to create checkout session.");
+        }
+      } catch (error) {
+        console.error("Error in createCheckout:", error);
+        toast.error("There was an error with the checkout process.");
+      }
+    } else {
+      toast.error("Please sign in to make Checkout");
+    }
   };
 
   return (
@@ -84,8 +110,7 @@ const Cart = () => {
                           </p>
                           <span className="text-base md:text-xl font-bold">
                             <sup>EGP</sup>
-                            {calculateSubtotal(item)}{" "}
-                            {/* Individual item total price */}
+                            {calculateSubtotal(item)}
                           </span>
                         </div>
                         <div className="text-xs text-green-500">
@@ -144,7 +169,10 @@ const Cart = () => {
                     {calculateTotal(cartItems)}
                   </span>
                 </p>
-                <button className="w-full rounded-full bg-amazon_yellowDark text-white py-2 mt-3">
+                <button
+                  onClick={createCheckout}
+                  className="w-full text-center rounded-full bg-amazon_yellowDark text-white py-2 mt-3"
+                >
                   Proceed to Checkout
                 </button>
               </div>
