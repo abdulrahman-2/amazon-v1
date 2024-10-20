@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
   return (
     <Link href={`product/${product?.id}`} passHref>
       <div className="border rounded-md overflow-hidden shadow-md">
-        <div className="relative bg-[#F7F8F8] p-5 h-[150px] md:h-[200px]">
+        <div className="relative bg-[#F7F8F8] p-5 h-[130px] md:h-[200px]">
           <Image
             src={images[0] || "/placeholder-image.jpg"}
             alt={title}

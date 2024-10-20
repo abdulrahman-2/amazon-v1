@@ -26,8 +26,8 @@ const HeaderCategories = () => {
         <div className="hidden md:flex items-center gap-2">
           <Sidebar categoriesList={categoriesList} />
         </div>
-        <Link href="/categories" className="headerItem h-full flex-shrink-0">
-          All Categories
+        <Link href="/products" className="headerItem h-full flex-shrink-0">
+          All
         </Link>
         {categoriesList.slice(0, 10).map((category) => (
           <Link

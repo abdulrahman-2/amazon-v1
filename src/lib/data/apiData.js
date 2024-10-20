@@ -5,19 +5,19 @@ const apiClient = axios.create({
   baseURL: "https://dummyjson.com",
 });
 
-export const getProducts = async () => {
+export const getProducts = async (page = 1, limit = 10) => {
+  const skip = (page - 1) * limit;
   try {
-    const response = await apiClient.get("/products");
-
-    // Validate response data (optional)
-    if (response.data && Array.isArray(response.data.products)) {
-      return response.data.products; // Return only the products array
-    } else {
-      throw new Error("Unexpected response structure");
-    }
+    const response = await apiClient.get(
+      `/products?limit=${limit}&skip=${skip}`
+    );
+    return {
+      products: response.data.products,
+      total: response.data.total,
+    };
   } catch (error) {
     console.error("Error fetching products:", error);
-    throw error; // Re-throw the error for further handling if needed
+    throw error;
   }
 };
 
@@ -25,15 +25,10 @@ export const getSingleProduct = async (id) => {
   try {
     const response = await apiClient.get(`/products/${id}`);
 
-    // Validate response data (optional)
-    if (response.data) {
-      return response.data; // Return the single product data
-    } else {
-      throw new Error("Unexpected response structure");
-    }
+    return response.data;
   } catch (error) {
     console.error(`Error fetching product with ID ${id}:`, error);
-    throw error; // Re-throw the error for further handling if needed
+    throw error;
   }
 };
 
@@ -43,6 +38,22 @@ export const getCategoriesList = async () => {
     return response.data;
   } catch (error) {
     console.error("Error fetching categories:", error);
+    throw error;
+  }
+};
+
+export const getFilteredProducts = async (category, page = 1, limit = 10) => {
+  const skip = (page - 1) * limit;
+  try {
+    const response = await apiClient.get(
+      `/products/category/${category}?limit=${limit}&skip=${skip}`
+    );
+    return {
+      products: response.data.products,
+      total: response.data.total,
+    };
+  } catch (error) {
+    console.error("Error fetching products:", error);
     throw error;
   }
 };
