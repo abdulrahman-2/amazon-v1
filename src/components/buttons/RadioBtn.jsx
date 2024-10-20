@@ -1,4 +1,10 @@
-const RadioBtn = ({ category, selectedCategory, setSelectedCategory }) => {
+"use client";
+
+import { ProductContext } from "@/src/context/ProductContext";
+import { useContext } from "react";
+
+const RadioBtn = ({ category }) => {
+  const { selectedCategory, setSelectedCategory } = useContext(ProductContext);
   return (
     <div className="flex items-center gap-5 relative">
       <input

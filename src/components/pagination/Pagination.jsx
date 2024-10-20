@@ -1,10 +1,12 @@
-const Pagination = ({
-  page,
-  handleNextPage,
-  handlePreviousPage,
-  totalProducts,
-  limit,
-}) => {
+"use client";
+
+import { ProductContext } from "@/src/context/ProductContext";
+import { useContext } from "react";
+
+const Pagination = () => {
+  const { page, handleNextPage, handlePreviousPage, totalProducts, limit } =
+    useContext(ProductContext);
+
   const totalPages = Math.ceil(totalProducts / limit);
 
   return (

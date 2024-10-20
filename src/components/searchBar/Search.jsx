@@ -1,22 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { HiMiniXMark } from "react-icons/hi2";
-import { getCategoriesList } from "@/src/lib/data/apiData";
+import { ProductContext } from "@/src/context/ProductContext";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [categoriesList, setCategoriesList] = useState([]);
-
-  useEffect(() => {
-    const fetchCategoriesList = async () => {
-      const data = await getCategoriesList();
-      setCategoriesList(data);
-    };
-
-    fetchCategoriesList();
-  });
+  const { categoriesList } = useContext(ProductContext);
 
   return (
     <div className="flex items-center relative">

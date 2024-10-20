@@ -1,39 +1,20 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import ProductCard from "../singleProduct/ProductCard";
 import Loading from "@/src/app/loading";
 import { MdArrowForwardIos, MdArrowBackIos } from "react-icons/md";
 import Title from "../title/Title";
-import { getProducts } from "@/src/lib/data/apiData";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import { ProductContext } from "@/src/context/ProductContext";
 
 const ProductsList = ({ start, end, title, linkName }) => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const getAllProducts = async () => {
-      setLoading(true);
-      try {
-        const data = await getProducts();
-        setProducts(data);
-      } catch (error) {
-        console.log("Error fetching products:", error);
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getAllProducts();
-  }, []);
+  const { allProducts, loading, error } = useContext(ProductContext);
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -72,7 +53,7 @@ const ProductsList = ({ start, end, title, linkName }) => {
               modules={[Navigation]}
               className="mySwiper"
             >
-              {products.slice(start, end).map((product) => (
+              {allProducts.slice(start, end).map((product) => (
                 <SwiperSlide key={product.id}>
                   <ProductCard product={product} />
                 </SwiperSlide>

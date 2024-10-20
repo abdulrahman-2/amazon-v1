@@ -2,21 +2,13 @@
 
 import Link from "next/link";
 import Sidebar from "../common/Sidebar";
-import { useEffect, useState } from "react";
-import { getCategoriesList } from "@/src/lib/data/apiData";
+import { useContext } from "react";
 import { useSession } from "next-auth/react";
 import SignOutBtn from "../buttons/SignOutBtn";
+import { ProductContext } from "@/src/context/ProductContext";
 
 const HeaderCategories = () => {
-  const [categoriesList, setCategoriesList] = useState([]);
-
-  useEffect(() => {
-    const fetchCategoriesList = async () => {
-      const data = await getCategoriesList();
-      setCategoriesList(data);
-    };
-    fetchCategoriesList();
-  });
+  const { categoriesList } = useContext(ProductContext);
 
   const { data: session } = useSession();
 

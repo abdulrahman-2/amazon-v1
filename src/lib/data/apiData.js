@@ -5,7 +5,17 @@ const apiClient = axios.create({
   baseURL: "https://dummyjson.com",
 });
 
-export const getProducts = async (page = 1, limit = 10) => {
+export const getAllProducts = async () => {
+  try {
+    const response = await apiClient.get("/products");
+    return response.data.products;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
+  }
+};
+
+export const getLimitedProducts = async (page = 1, limit = 10) => {
   const skip = (page - 1) * limit;
   try {
     const response = await apiClient.get(
