@@ -3,14 +3,14 @@
 import { ProductContext } from "@/src/context/ProductContext";
 import { useContext } from "react";
 
-const RadioBtn = ({ category }) => {
+const CategoryRadioBtn = ({ category }) => {
   const { selectedCategory, setSelectedCategory } = useContext(ProductContext);
   return (
     <div className="flex items-center gap-5 relative">
       <input
-        value={category} // Set the value to the current category
-        checked={selectedCategory === category} // Checked if the category matches selectedCategory
-        onChange={() => setSelectedCategory(category)} // Update selectedCategory when clicked
+        value={category}
+        checked={selectedCategory === category}
+        onChange={() => setSelectedCategory(category)}
         type="radio"
         id={category}
         name="category"
@@ -27,4 +27,4 @@ const RadioBtn = ({ category }) => {
   );
 };
 
-export default RadioBtn;
+export default CategoryRadioBtn;

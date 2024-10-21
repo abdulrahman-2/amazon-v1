@@ -25,7 +25,7 @@ const Home = () => {
 
         <ProductsList
           start={0}
-          end={8}
+          end={10}
           title={"Shop Today's Deals"}
           linkName={"See All Deals"}
         />
@@ -45,8 +45,8 @@ const Home = () => {
         />
 
         <ProductsList
-          start={8}
-          end={16}
+          start={10}
+          end={20}
           title={"Deals Under 250 EGP"}
           linkName={"See All Deals"}
         />
@@ -56,15 +56,15 @@ const Home = () => {
         <ProductsImageList
           title={"For Him, For Her & More"}
           linkName={"Shope Now"}
-          start={0}
-          end={15}
+          start={30}
+          end={40}
         />
 
         <ProductsImageList
           title={"Hair Styling, Electric Shavers & More"}
           linkName={"Shope Now"}
-          start={15}
-          end={30}
+          start={40}
+          end={50}
         />
 
         <OffersList

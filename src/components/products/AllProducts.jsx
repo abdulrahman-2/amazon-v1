@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { ProductContext } from "@/src/context/ProductContext";
 
 const AllProducts = () => {
-  const { products, loading, error, limit, totalProducts } =
+  const { filteredProducts, loading, error, limit, totalProducts } =
     useContext(ProductContext);
 
   return (
@@ -37,7 +37,7 @@ const AllProducts = () => {
           </div>
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-3">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

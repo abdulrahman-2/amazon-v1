@@ -5,7 +5,7 @@ import bannerImgThree from "./banner/bannerImgThree.jpg";
 import bannerImgFour from "./banner/bannerImgFour.jpg";
 import bannerImgFive from "./banner/bannerImgFive.jpg";
 import bdFlag from "./bdFlag.webp";
-import cartIcon from "./cart.svg";
+import cartIcon from "./cart.png";
 import emptyCart from "./emptyCart.png";
 import egyptFlag from "./egypt.svg";
 import visa from "./payment-images/visa.svg";

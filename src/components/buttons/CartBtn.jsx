@@ -12,10 +12,10 @@ const CartBtn = () => {
       <Image
         src={cartIcon}
         alt="cart"
-        className="w-auto h-8 md:h-11 object-cover"
+        className="w-auto h-7 md:h-10 object-cover"
       />
       <span className="self-end hidden md:flex">Cart</span>
-      <span className="absolute right-[22px] md:right-[67px] top-[22px] md:top-[20px] text-xs md:text-sm text-amazon_orangeDark">
+      <span className="absolute right-[24px] md:right-[72px] top-[7px] md:top-[7px] font-bold text-amazon_orangeDark">
         {cartItems.length}
       </span>
     </Link>
