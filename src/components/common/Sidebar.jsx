@@ -85,12 +85,12 @@ const Sidebar = () => {
       {/* Sidebar */}
       <div
         id="sidebar"
-        className={`fixed top-0 left-0 h-screen overflow-y-scroll w-[300px] md:w-[350px] bg-white shadow-md z-50 transition-transform duration-300 transform ${
+        className={`fixed top-0 left-0 h-full overflow-y-scroll w-[300px] md:w-[350px] bg-white shadow-md z-50 transition-transform duration-300 transform ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {session ? (
-          <div className="p-6 h-[50px] w-full bg-amazon_light flex items-center justify-between">
+          <div className="p-6 h-[50px] relative w-full bg-amazon_light flex items-center justify-between">
             <div className="font-bold text-white flex items-center gap-2">
               <Image
                 src={session?.user?.image}
@@ -100,12 +100,12 @@ const Sidebar = () => {
                 className="rounded-full"
               />
               <h3 className="text-lg font-semibold">
-                Hello, {session?.user?.name}
+                Hello, {session?.user?.name.substring(0, 12)}
               </h3>
             </div>
             <HiMiniXMark
               size={35}
-              className="cursor-pointer text-white"
+              className="cursor-pointer text-white absolute z-20 right-1"
               onClick={handleClose}
               aria-label="Close sidebar"
             />

@@ -7,6 +7,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import { MdPersonOutline } from "react-icons/md";
 import { RiArrowDropRightLine } from "react-icons/ri";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 import HeaderCategories from "../categories/HeaderCategories";
 import Sidebar from "./Sidebar";
 import Search from "../searchBar/Search";
@@ -71,7 +72,9 @@ const Header = () => {
           </span>
           <span className="text-[13px] font-bold">& Favorite</span>
         </Link>
-        <div className="flex items-center ml-auto">
+
+        {/* mobile */}
+        <div className="flex items-center gap-2 ml-auto">
           <div className="lg:hidden flex items-center text-white text-sm">
             {!session && (
               <button onClick={() => signIn()} className="flex items-center">
@@ -84,9 +87,18 @@ const Header = () => {
             )}
             <MdPersonOutline size={35} className="text-white" />
           </div>
+          <Link href="/favorite">
+            <div className="lg:hidden relative">
+              <span className="w-4 h-4 text-xs absolute bg-red-500 top-0 right-0 font-bold grid place-items-center text-white rounded-full">
+                {favoriteItems.length}
+              </span>
+              <MdOutlineFavoriteBorder size={35} className="text-white" />
+            </div>
+          </Link>
           <CartBtn />
         </div>
       </div>
+
       <div className="px-3 bg-black h-auto lg:hidden block py-2">
         <Search />
       </div>
