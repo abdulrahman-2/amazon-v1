@@ -4,6 +4,7 @@ import { verified } from "@/src/assets";
 import { resetCart } from "@/src/lib/store/features/CartSlice";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
