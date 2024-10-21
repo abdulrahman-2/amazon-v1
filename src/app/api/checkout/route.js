@@ -29,7 +29,7 @@ export const POST = async (request) => {
       mode: "payment",
       success_url: `${process.env.NEXTAUTH_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
 
-      cancel_url: `${process.env.NEXTAUTH_URL}/cancel`,
+      cancel_url: `${process.env.NEXTAUTH_URL}/checkout`,
       metadata: {
         email,
       },
