@@ -13,9 +13,11 @@ import Search from "../searchBar/Search";
 import SignInBtn from "@/src/components/buttons/SignInBtn";
 import CartBtn from "../buttons/CartBtn";
 import { signIn, useSession } from "next-auth/react";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const { data: session } = useSession();
+  const { favoriteItems } = useSelector((state) => state.favorite);
   return (
     <div className="sticky top-0 z-50">
       {/* top header  */}
@@ -58,10 +60,16 @@ const Header = () => {
           </div>
         </div>
         <Link
-          href="/orders"
-          className="text-white hidden lg:flex items-center justify-center h-[90%] headerItem font-semibold"
+          href="/favorite"
+          className="text-white hidden lg:flex flex-col justify-center h-[90%] headerItem font-semibold"
         >
-          Orders
+          <span className="text-amazon_lightText font-medium text-xs flex items-center gap-2">
+            Marked{" "}
+            <span className="w-5 h-5 border border-amazon_lightText font-bold grid place-items-center text-amazon_orangeDark rounded-md">
+              {favoriteItems.length}
+            </span>
+          </span>
+          <span className="text-[13px] font-bold">& Favorite</span>
         </Link>
         <div className="flex items-center ml-auto">
           <div className="lg:hidden flex items-center text-white text-sm">

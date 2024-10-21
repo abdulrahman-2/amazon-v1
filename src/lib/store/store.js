@@ -1,4 +1,5 @@
 import cartReducer from "./features/CartSlice";
+import favoriteReducer from "./features/FavoriteSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
 import {
@@ -47,10 +48,12 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, cartReducer);
+const persistedFavoriteReducer = persistReducer(persistConfig, favoriteReducer);
 
 export const store = configureStore({
   reducer: {
     cart: persistedReducer,
+    favorite: persistedFavoriteReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

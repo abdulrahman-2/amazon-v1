@@ -7,6 +7,7 @@ import bannerImgFive from "./banner/bannerImgFive.jpg";
 import bdFlag from "./bdFlag.webp";
 import cartIcon from "./cart.png";
 import emptyCart from "./emptyCart.png";
+import emptyWishlist from "./emptyWishlist.png";
 import egyptFlag from "./egypt.svg";
 import visa from "./payment-images/visa.svg";
 import discover from "./payment-images/discover.svg";
@@ -78,6 +79,7 @@ export {
   bannerImgFour,
   bannerImgFive,
   emptyCart,
+  emptyWishlist,
   bdFlag,
   cartIcon,
   egyptFlag,

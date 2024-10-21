@@ -16,7 +16,9 @@ const SignIn = () => {
             height={20}
             className="rounded-full"
           />
-          <span>hello, {session?.user.name.substring(0, 10)}</span>
+          <span className="text-amazon_lightText">
+            hello, {session?.user.name.substring(0, 10)}
+          </span>
         </div>
       ) : (
         <button onClick={() => signIn()}>
