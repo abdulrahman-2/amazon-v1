@@ -6,11 +6,21 @@ import { useContext } from "react";
 import { useSession } from "next-auth/react";
 import SignOutBtn from "../buttons/SignOutBtn";
 import { ProductContext } from "@/src/context/ProductContext";
+import { useRouter } from "next/navigation";
 
 const HeaderCategories = () => {
-  const { categoriesList } = useContext(ProductContext);
+  const { categoriesList, selectedCategory, setSelectedCategory } =
+    useContext(ProductContext);
 
   const { data: session } = useSession();
+
+  const router = useRouter();
+
+  const handleSelectedCategory = (category) => {
+    selectedCategory === category;
+    setSelectedCategory(category);
+    router.push(`/products`);
+  };
 
   return (
     <div>
@@ -18,17 +28,20 @@ const HeaderCategories = () => {
         <div className="hidden md:flex items-center gap-2">
           <Sidebar categoriesList={categoriesList} />
         </div>
-        <Link href="/products" className="headerItem h-full flex-shrink-0">
+        <button
+          onClick={() => handleSelectedCategory("All Categories")}
+          className="headerItem h-full flex-shrink-0 px-3"
+        >
           All
-        </Link>
+        </button>
         {categoriesList.slice(0, 10).map((category) => (
-          <Link
+          <button
+            onClick={() => handleSelectedCategory(category)}
             key={category}
-            href={`/${category}`}
             className="headerItem h-full flex-shrink-0"
           >
             {category}
-          </Link>
+          </button>
         ))}
         <Link href="/sell" className="headerItem h-full flex-shrink-0">
           Sell

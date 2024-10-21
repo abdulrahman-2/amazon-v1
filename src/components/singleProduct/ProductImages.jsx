@@ -21,8 +21,10 @@ const ProductImages = ({ product }) => {
             alt="product image"
             width={100}
             height={100}
-            className={`object-contain h-20 w-20 cursor-pointer opacity-75 ${
-              imgUrl === image && "opacity-100 border border-amazon_orange"
+            className={`object-contain h-20 w-20 cursor-pointer ${
+              imgUrl === image
+                ? "opacity-100 border border-amazon_orange"
+                : "opacity-75"
             } bg-[#e3e6e6] p-2 rounded-md`}
           />
         ))}

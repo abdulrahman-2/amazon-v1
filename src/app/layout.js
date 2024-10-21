@@ -4,6 +4,7 @@ import Header from "@/src/components/common/Header";
 import Footer from "@/src/components/common/Footer";
 import Notifications from "@/src/components/notifications/Notifications";
 import LayoutProvider from "@/src/components/providers/LayoutProvider";
+import ScrollTopBtn from "../components/buttons/ScrollTopBtn";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
       <body className={poppins.className}>
         <LayoutProvider>
           <Notifications />
+          <ScrollTopBtn />
           <Header />
           {children}
           <Footer />

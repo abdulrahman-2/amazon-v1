@@ -31,7 +31,7 @@ const Header = () => {
             priority
           />
         </Link>
-        <div className="hidden lg:flex items-center headerItem text-xs">
+        <div className="hidden lg:flex items-center headerItem h-[90%] text-xs">
           <HiOutlineLocationMarker size={20} className="text-white" />
           <div className="flex flex-col">
             <span className="text-amazon_lightText font-medium">
@@ -45,7 +45,7 @@ const Header = () => {
         <div className="hidden lg:block flex-1">
           <Search />
         </div>
-        <div className="hidden lg:flex items-center justify-center gap-1 h-[80%] headerItem font-semibold text-white">
+        <div className="hidden lg:flex items-center justify-center gap-1 h-[90%] headerItem font-semibold text-white">
           <Image src={egyptFlag} alt="egypt flag" className="w-[20px]" />
           EN
           <RiArrowDropDownFill size={25} />
@@ -59,7 +59,7 @@ const Header = () => {
         </div>
         <Link
           href="/orders"
-          className="text-white hidden lg:flex items-center justify-center h-[80%] headerItem font-semibold"
+          className="text-white hidden lg:flex items-center justify-center h-[90%] headerItem font-semibold"
         >
           Orders
         </Link>
@@ -74,7 +74,7 @@ const Header = () => {
                 />
               </button>
             )}
-            <MdPersonOutline size={30} className="text-white" />
+            <MdPersonOutline size={35} className="text-white" />
           </div>
           <CartBtn />
         </div>

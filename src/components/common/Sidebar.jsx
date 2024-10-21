@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
 import { IoMenu } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
 import { HiMiniXMark } from "react-icons/hi2";
@@ -8,21 +8,27 @@ import { RiArrowDownSLine } from "react-icons/ri";
 import Image from "next/image";
 import { TbWorld } from "react-icons/tb";
 import { egyptFlag } from "@/src/assets";
-import { getCategoriesList } from "@/src/lib/data/apiData";
+import { useRouter } from "next/navigation";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { ProductContext } from "@/src/context/ProductContext";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
-  const [categoriesList, setCategoriesList] = useState([]);
 
-  useEffect(() => {
-    const fetchCategoriesList = async () => {
-      const data = await getCategoriesList();
-      setCategoriesList(data);
-    };
+  const { categoriesList, selectedCategory, setSelectedCategory } =
+    useContext(ProductContext);
 
-    fetchCategoriesList();
-  });
+  const { data: session } = useSession();
+
+  const router = useRouter();
+
+  const handleSelectedCategory = (category) => {
+    selectedCategory === category;
+    setSelectedCategory(category);
+    setOpen(false);
+    router.push(`/products`);
+  };
 
   const handleOpen = () => {
     setOpen(!open);
@@ -83,17 +89,40 @@ const Sidebar = () => {
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="p-6 h-[50px] w-full bg-amazon_light flex items-center justify-between">
-          <span className="font-bold text-white flex items-center gap-2">
-            <BsPersonCircle size={25} /> Hello, sign in
-          </span>
-          <HiMiniXMark
-            size={35}
-            className="cursor-pointer text-white"
-            onClick={handleClose}
-            aria-label="Close sidebar"
-          />
-        </div>
+        {session ? (
+          <div className="p-6 h-[50px] w-full bg-amazon_light flex items-center justify-between">
+            <div className="font-bold text-white flex items-center gap-2">
+              <Image
+                src={session?.user?.image}
+                alt="user profile"
+                width={25}
+                height={25}
+                className="rounded-full"
+              />
+              <h3 className="text-lg font-semibold">
+                Hello, {session?.user?.name}
+              </h3>
+            </div>
+            <HiMiniXMark
+              size={35}
+              className="cursor-pointer text-white"
+              onClick={handleClose}
+              aria-label="Close sidebar"
+            />
+          </div>
+        ) : (
+          <div className="p-6 h-[50px] w-full bg-amazon_light flex items-center justify-between">
+            <span className="font-bold text-white flex items-center gap-2">
+              <BsPersonCircle size={25} /> Hello, sign in
+            </span>
+            <HiMiniXMark
+              size={35}
+              className="cursor-pointer text-white"
+              onClick={handleClose}
+              aria-label="Close sidebar"
+            />
+          </div>
+        )}
         <div className="text-black overflow-y-auto">
           {/* Sidebar content */}
           <div className="p-6">
@@ -109,7 +138,11 @@ const Sidebar = () => {
             <h3 className="text-lg font-semibold mb-3">Shop by Category</h3>
             <ul className="flex flex-col gap-3">
               {displayedCategories.map((category) => (
-                <li key={category} className="text-black text-sm">
+                <li
+                  key={category}
+                  onClick={() => handleSelectedCategory(category)}
+                  className="text-black text-sm"
+                >
                   {category}
                 </li>
               ))}
@@ -121,6 +154,16 @@ const Sidebar = () => {
               {showAll ? "Show Less" : "See All"}
               <RiArrowDownSLine size={20} />
             </button>
+          </div>
+          <hr />
+          <div className="p-6">
+            <h3 className="text-lg font-semibold mb-3">Programs & Features</h3>
+            <ul className="flex flex-col gap-3">
+              <li className="text-black text-sm">Gift Carts</li>
+              <li className="text-black text-sm">Shope by Interest</li>
+              <li className="text-black text-sm">Amazon Live</li>
+              <li className="text-black text-sm">International Shopping</li>
+            </ul>
           </div>
           <hr />
           {/* Other sections */}
@@ -141,7 +184,15 @@ const Sidebar = () => {
                 <span>Egypt</span>
               </li>
               <li className="text-black text-sm">Help</li>
-              <li className="text-black text-sm">Sign in</li>
+              {session ? (
+                <li className="text-black text-sm" onClick={() => signOut()}>
+                  Sign out
+                </li>
+              ) : (
+                <li className="text-black text-sm" onClick={() => signIn()}>
+                  Sign in
+                </li>
+              )}
             </ul>
           </div>
         </div>

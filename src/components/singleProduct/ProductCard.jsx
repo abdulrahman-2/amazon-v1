@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
     : null;
 
   return (
-    <Link href={`product/${product?.id}`} passHref>
+    <Link href={`products/${product?.id}`} passHref>
       <div className="border rounded-md overflow-hidden shadow-md">
         <div className="relative bg-[#F7F8F8] p-5 h-[130px] md:h-[200px]">
           <Image

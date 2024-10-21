@@ -8,7 +8,10 @@ import { useSelector } from "react-redux";
 const CartBtn = () => {
   const { cartItems } = useSelector((state) => state.cart);
   return (
-    <Link href="/cart" className="text-white md:headerItem font-semibold flex">
+    <Link
+      href="/cart"
+      className="text-white md:headerItem md:h-[90%] font-semibold flex"
+    >
       <Image
         src={cartIcon}
         alt="cart"

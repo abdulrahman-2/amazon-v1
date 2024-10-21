@@ -25,7 +25,7 @@ const AddToCartBtn = ({ product }) => {
         <ChangeQuantity item={product} />
       ) : (
         <button
-          className="w-full bg-gray-200 hover:bg-amazon_blue hover:text-white ease-in-out duration-200 font-bold py-2 px-4 rounded-md"
+          className="w-full bg-gray-200 hover:bg-amazon_yellowDark hover:text-white ease-in-out duration-200 font-bold py-2 px-4 rounded-full"
           onClick={() => addToCartHandler(product)}
         >
           ADD TO CART

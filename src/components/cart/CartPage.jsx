@@ -29,14 +29,18 @@ const Cart = () => {
   const calculateTotal = (cartItems) => {
     let total = 0;
     cartItems.forEach((item) => {
-      total += item.price * item.quantity;
+      const discountedPrice =
+        item.price - item.price * (item.discountPercentage / 100);
+      total += discountedPrice * item.quantity;
     });
     return total.toFixed(2);
   };
 
   const calculateSubtotal = (item) => {
     let subTotal = 0;
-    subTotal = item.price * item.quantity;
+    const discountedPrice =
+      item.price - item.price * (item.discountPercentage / 100);
+    subTotal = discountedPrice * item.quantity;
     return subTotal.toFixed(2);
   };
 
@@ -92,7 +96,7 @@ const Cart = () => {
               <div className="flex flex-col gap-5 p-5">
                 {cartItems.map((item) => (
                   <div key={item?.id} className="flex gap-3 md:gap-5">
-                    <Link href={`/product/${item?.id}`}>
+                    <Link href={`/products/${item?.id}`}>
                       <div className="relative bg-gray-200 w-28 h-28 md:w-40 md:h-40 rounded-md">
                         <Image
                           src={item?.images[0]}
