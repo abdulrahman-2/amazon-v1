@@ -1,6 +1,6 @@
 "use client";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../singleProduct/ProductCard";
 import ProductsList from "../products/ProductsList";
 
@@ -14,9 +14,12 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { emptyWishlist } from "@/src/assets";
+import { resetFavorite } from "@/src/lib/store/features/FavoriteSlice";
 
 const FavoritePage = () => {
   const { favoriteItems } = useSelector((state) => state.favorite);
+
+  const dispatch = useDispatch();
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
@@ -70,6 +73,12 @@ const FavoritePage = () => {
                 </button>
               </div>
             </div>
+            <button
+              className="ml-auto block mt-5 p-2 border border-black rounded-lg duration-200 hover:bg-black hover:text-white font-semibold"
+              onClick={() => dispatch(resetFavorite())}
+            >
+              Reset Favorite List
+            </button>
           </div>
           <div className="my-10">
             <ProductsList
