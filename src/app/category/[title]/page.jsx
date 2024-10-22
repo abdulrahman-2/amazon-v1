@@ -1,4 +1,4 @@
-import ProductCard from "@/src/components/singleProduct/ProductCard";
+import SingleCategoryPage from "@/src/components/categories/SingleCategoryPage";
 import { getFilteredProducts } from "@/src/lib/data/apiData";
 
 export const generateMetadata = async ({ params }) => {
@@ -18,15 +18,7 @@ const Category = async ({ params }) => {
     <div className="my-10 container mx-auto p-3">
       <h1 className="text-3xl font-semibold pb-5">{title}</h1>
       <hr />
-      {products && products.length > 0 ? (
-        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-          {products.map((product) => (
-            <ProductCard product={product} key={product.id} />
-          ))}
-        </div>
-      ) : (
-        <p>No products found for this category.</p>
-      )}
+      <SingleCategoryPage products={products} />
     </div>
   );
 };

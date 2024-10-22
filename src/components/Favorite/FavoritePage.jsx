@@ -41,9 +41,9 @@ const FavoritePage = () => {
                     swiper.navigation.update();
                   }}
                   breakpoints={{
-                    0: { slidesPerView: 2 },
-                    640: { slidesPerView: 3 },
-                    768: { slidesPerView: 4 },
+                    0: { slidesPerView: 1 },
+                    470: { slidesPerView: 2 },
+                    768: { slidesPerView: 3 },
                     1024: { slidesPerView: 5 },
                     1280: { slidesPerView: 5 },
                     1536: { slidesPerView: 6 },

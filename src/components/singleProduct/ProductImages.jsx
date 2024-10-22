@@ -12,7 +12,7 @@ const ProductImages = ({ product }) => {
 
   return (
     <div className="flex flex-col-reverse xl:flex-row items-start gap-2">
-      <div className="flex flex-row xl:flex-col gap-3">
+      <div className="flex flex-row xl:flex-col flex-wrap gap-3">
         {product?.images.map((image, index) => (
           <Image
             onClick={() => handleImgUrl(image)}
