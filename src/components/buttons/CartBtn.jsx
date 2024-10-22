@@ -10,15 +10,15 @@ const CartBtn = () => {
   return (
     <Link
       href="/cart"
-      className="text-white md:headerItem md:h-[90%] font-semibold flex"
+      className="text-white lg:headerItem lg:h-[90%] font-semibold flex"
     >
       <Image
         src={cartIcon}
         alt="cart"
-        className="w-auto h-6 md:h-10 object-cover"
+        className="w-auto h-6 lg:h-10 object-cover"
       />
-      <span className="self-end hidden md:flex">Cart</span>
-      <span className="absolute right-[24px] md:right-[72px] top-[7px] md:top-[7px] font-semibold text-amazon_orangeDark">
+      <span className="self-end hidden lg:flex">Cart</span>
+      <span className="absolute right-[22px] lg:right-[72px] top-[7px] lg:top-[7px] font-semibold text-amazon_orangeDark">
         {cartItems.length}
       </span>
     </Link>

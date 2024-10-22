@@ -18,25 +18,22 @@ import github from "./github-mark-white.png";
 import google from "./Google__G__logo.svg.png";
 import verified from "./verified.gif";
 
-import car_compressors from "../assets/category/Car_compressors.jpg";
+import groseries from "../assets/category/groseries.jpg";
+import beauty from "../assets/category/beauty.jpg";
+import decoration from "../assets/category/decoration.jpg";
+import fragrances from "../assets/category/fragrances.webp";
+import kitchenAccessories from "../assets/category/kitchen-accessories.jpeg";
+import mensShirts from "../assets/category/mens-shirts.jpg";
+import mensShoes from "../assets/category/men's-shoes.jpg";
+import mensWatches from "../assets/category/mens-watches.avif";
+import mobileAccessories from "../assets/category/mobile-accessories.webp";
+import motorcycle from "../assets/category/motorcycle.avif";
+import skinCare from "../assets/category/skin-care.webp";
+import smartphones from "../assets/category/smartphones.webp";
+import sunglasses from "../assets/category/sunglasses.jpg";
 import laptops from "../assets/category/laptops.jpg";
-import mattressImage from "../assets/category/mattresses.jpg";
-import offImage from "../assets/category/off.jpg";
-
-import musical from "../assets/category/Musical.jpg";
-import Jewelry from "../assets/category/Jewelry.jpg";
-import organizers from "../assets/category/organizers.jpg";
-import lunch_box from "../assets/category/lunch_box.jpg";
-
-import bathroom from "../assets/category/Bathroom.jpg";
-import cloth from "../assets/category/clouth.jpg";
-import food from "../assets/category/food.jpg";
-import payment from "../assets/category/payment.jpg";
-
-import toys from "../assets/category/toys.jpg";
-import gaming from "../assets/category/gaming.jpg";
 import sport from "../assets/category/sport.jpg";
-import amazon_Basket from "../assets/category/Amazon_Basket.jpg";
+import furniture from "../assets/category/furniture.webp";
 
 import Budget_1 from "../assets/Budget/Budget _1.jpg";
 import Budget_2 from "../assets/Budget/Budget _2.jpg";
@@ -88,22 +85,22 @@ export {
   paypal,
   verve,
   mastercard,
-  car_compressors,
   laptops,
-  mattressImage,
-  offImage,
-  musical,
-  Jewelry,
-  organizers,
-  lunch_box,
-  bathroom,
-  cloth,
-  food,
-  payment,
-  toys,
-  gaming,
+  decoration,
+  groseries,
+  furniture,
+  sunglasses,
+  skinCare,
+  smartphones,
+  motorcycle,
+  mensWatches,
+  mobileAccessories,
+  mensShirts,
+  mensShoes,
+  kitchenAccessories,
+  fragrances,
+  beauty,
   sport,
-  amazon_Basket,
   Budget_1,
   Budget_2,
   Budget_3,

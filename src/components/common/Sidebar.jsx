@@ -90,7 +90,7 @@ const Sidebar = () => {
         }`}
       >
         {session ? (
-          <div className="p-6 h-[50px] relative w-full bg-amazon_light flex items-center justify-between">
+          <div className="p-3 h-[50px] relative w-full bg-amazon_light flex items-center justify-between">
             <div className="font-bold text-white flex items-center gap-2">
               <Image
                 src={session?.user?.image}
@@ -100,7 +100,7 @@ const Sidebar = () => {
                 className="rounded-full"
               />
               <h3 className="text-lg font-semibold">
-                Hello, {session?.user?.name.substring(0, 12)}
+                Hello, {`${session?.user.name.substring(0, 12)}...`}
               </h3>
             </div>
             <HiMiniXMark

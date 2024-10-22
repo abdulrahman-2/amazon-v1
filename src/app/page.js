@@ -1,27 +1,25 @@
+"use client";
+
 import CarouselBanner from "@/src/components/banner/CarouselBanner";
 import CategoryList from "@/src/components/categories/CategoryList";
 import ProductsImageList from "@/src/components/products/ProductsImagesList";
 import ProductsList from "@/src/components/products/ProductsList";
-import {
-  budgets,
-  deals,
-  gamingCategories,
-  guides,
-  offers,
-  organizersCategories,
-  shoppingPerks,
-} from "@/src/lib/data/localData";
+import { budgets, guides, shoppingPerks } from "@/src/lib/data/localData";
 import OffersList from "@/src/components/offersLists/OffersList";
+import { useContext } from "react";
+import { ProductContext } from "../context/ProductContext";
 
 const Home = () => {
+  const { sectionOne, sectionTwo, sectionThree, sectionFour } =
+    useContext(ProductContext);
   return (
     <main className="bg-[#e3e6e6]">
       <CarouselBanner />
 
-      <div className="-mt-[100px] md:-mt-[415px] relative z-30 pb-10">
-        <CategoryList categories={offers} />
+      <div className="-mt-[100px] md:-mt-[410px] relative z-30 pb-10">
+        <CategoryList categories={sectionOne} />
 
-        <CategoryList categories={deals} />
+        <CategoryList categories={sectionTwo} />
 
         <ProductsList
           start={0}
@@ -36,7 +34,7 @@ const Home = () => {
           link={"Shop all deals"}
         />
 
-        <CategoryList categories={gamingCategories} />
+        <CategoryList categories={sectionThree} />
 
         <OffersList
           offers={shoppingPerks}
@@ -51,7 +49,7 @@ const Home = () => {
           linkName={"See All Deals"}
         />
 
-        <CategoryList categories={organizersCategories} />
+        <CategoryList categories={sectionFour} />
 
         <ProductsImageList
           title={"For Him, For Her & More"}

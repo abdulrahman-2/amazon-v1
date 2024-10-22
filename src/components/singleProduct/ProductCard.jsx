@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
@@ -57,7 +59,7 @@ const ProductCard = ({ product }) => {
         </Link>
       </div>
       <Link href={`products/${product?.id}`} passHref>
-        <div className="relative bg-[#F7F8F8] p-5 h-[120px] md:h-[200px]">
+        <div className="relative bg-[#F7F8F8] p-5 h-[200px]">
           <Image
             src={images?.[0] || "/placeholder-image.jpg"}
             alt={title}
@@ -70,7 +72,7 @@ const ProductCard = ({ product }) => {
       </Link>
       <div className="p-1">
         {discountPercentage && (
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-3 mb-1">
+          <div className="flex items-center flex-row sm:flex-col sm:items-start xl:flex-row xl:items-center gap-1 mb-1">
             <span className="bg-red-600 text-xs text-white font-bold py-1 px-2">
               {`${discountPercentage}% off`}
             </span>

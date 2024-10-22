@@ -17,7 +17,7 @@ const SignIn = () => {
             className="rounded-full"
           />
           <span className="text-amazon_lightText">
-            hello, {session?.user.name.substring(0, 10)}
+            hello, {`${session?.user.name.substring(0, 12)}...`}
           </span>
         </div>
       ) : (
